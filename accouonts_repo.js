@@ -1,7 +1,7 @@
 
 const connectedKnex = require('./knex_connector')
 
-const getAllaccounts = () => {
+const getAllAccounts = () => {
     return connectedKnex('accounts').select('*');
 }
 
@@ -9,12 +9,12 @@ const getAccountById = (id) => {
     return connectedKnex('accounts').where('id', id).first();
 }
 
-const addNewAccount = (account) => {
-    return connectedKnex('accounts').insert(account);
+const addNewAccount = (account, date) => {
+    return connectedKnex('accounts').insert(account).update('created_date', date)
 }
 
-const updateAccount = (account, id) => {
-    return connectedKnex("accounts").where('id', id).update(account);
+const updateAccount = (account, id, date) => {
+    return connectedKnex("accounts").where('id', id).update(account).update('last_updated', date)
 }
 
 const deleteAccount = (id) => {
@@ -22,7 +22,7 @@ const deleteAccount = (id) => {
 }
 
 module.exports = {
-    getAllaccounts,
+    getAllAccounts,
     getAccountById,
     addNewAccount,
     updateAccount,

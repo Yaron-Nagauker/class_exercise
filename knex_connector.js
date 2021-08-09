@@ -1,4 +1,4 @@
-const knex = require('knex')
+
 
 //  pg connector 
 const connectedKnex = require('knex')({
@@ -7,7 +7,7 @@ const connectedKnex = require('knex')({
   connection: {
     host : '127.0.0.1',
     user : 'postgres',   
-    password : '',
+    password : 'admin',
     database : 'postgres'
   }
 });
